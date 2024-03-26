@@ -1,0 +1,23 @@
+<div class="row p-5">
+  <div class="col-md card">
+      <div class="image" [style.background-image]="'url(' + backgroundImageUrl + ')'" >
+        <div class="example-boundary"
+             [style.height.px]="50"
+             [style.width.px]="200"
+             [ngClass]="{'hideBorder':redBorder}"
+             [style.transform]="'translate(-300px, -155px)'"
+            >
+        <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag
+             [style.transform]="'translate(0px, 12px)'">
+         <span class="example-text">{{design}}</span>
+        </div>
+      </div>
+  </div>
+  </div>
+  <div class="col-md">
+    <label for="username" class="w-100"> Write Default Text</label>
+    <textarea pInputTextarea id="username" class="p-inputtext-sm w-100" [(ngModel)]="design"></textarea>
+    <br>
+  </div>
+</div>
+

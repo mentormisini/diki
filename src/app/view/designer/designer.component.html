@@ -1,0 +1,129 @@
+<div class="row p-3">
+  <div class="col-md card m-2 p-4">
+    <div class="d-inline-flex justify-content-between">
+      <h4>1. Concepteur (Res: W:770px H:360)</h4>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" style="display: none;" #fileInput>
+      <p-button label="Upload Photo" class="btn1" (click)="fileInput.click()"></p-button>
+    </div>
+    <p-divider></p-divider>
+    <div class="image" [style.background-image]="'url(' + backgroundImageUrl + ')'" >
+      <div class="example-boundary"
+           [style.height.px]="heightBox"
+           [style.width.px]="widthBox"
+           [ngClass]="{'hideBorder':redBorder}"
+           [style.transform]="'translate(-250px, -25px)'"
+           cdkDrag>
+        <div class="example-box" cdkDragBoundary=".example-boundary" cdkDrag
+             (cdkDragMoved)="onDragMoved($event)"
+             (mousemove)="log($event)"
+             [style.transform]="'translate(0px, 12px)'">
+         <span [style.color]="color"
+               [style.line-height]="lineHeightOfBox"
+               class="example-text">{{design}}</span>
+        </div>
+      </div>
+     <p-button label="🧿"
+     (click)="showRedBorder()" [outlined]="true" severity="warning"></p-button>
+    </div>
+    <b style="margin-top:auto">{{mouseP}}</b>
+  </div>
+  <div class="col-md card m-2 p-4">
+    <h4>2. Concepteur Configurations</h4>
+    <p-divider></p-divider>
+    <div class="row">
+      <div class="col-md">
+        <label for="username" class="w-100"> Write Default Text</label>
+        <textarea rows="4" cols="30" pInputTextarea id="username" class="p-inputtext-sm w-100" [(ngModel)]="design"></textarea>
+        <br>
+        <div class="col-md">
+          <label class="w-100">
+            Select Default Color
+          </label>
+          <div class="d-inline-flex gap-3">
+          <p-colorPicker [(ngModel)]="color"[inline]="true"></p-colorPicker>
+          <input type="text"  pInputText [(ngModel)]="color">
+          </div>
+        </div>
+        <div class="col-md">
+          <label class="w-100">Selectionner Style de font</label>
+          <p-dropdown [options]="cities"
+                      appendTo="body"
+                      [style]="{'width':'100%'}"
+                      [(ngModel)]="selectedCity"
+                      placeholder="Selectioner categorie"  optionLabel="name"></p-dropdown>
+        </div>
+        <div class="col-md">
+          <label for="width" class="w-100"> Set line height</label>
+          <input type="text" pInputText id="width"
+                         class="p-inputtext-sm w-100"
+                         [(ngModel)]="lineHeightOfBox" />
+          <p-slider [(ngModel)]="lineHeightOfBox" class="w-full" [step]="0.1"></p-slider>
+        </div>
+      </div>
+
+      <div class="col-md">
+        <label for="width" class="w-100"> Set Width of Box</label>
+        <p-inputNumber id="width" [showButtons]="true"  class="p-inputtext-sm p-fluid" [(ngModel)]="widthBox" />
+        <div class="col-md">
+          <label for="width" class="w-100"> Set Height of Box</label>
+          <p-inputNumber id="height" [showButtons]="true" class="p-inputtext-sm w-100" [(ngModel)]="heightBox" />
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <div class="row p-3">
+    <div class="card m-2 p-4">
+      <h4>3. Produit Detail</h4>
+      <p-divider></p-divider>
+      <div class="row">
+        <div class="col-md">
+          <label class="w-100">Selectionner</label>
+          <p-dropdown [options]="cities"
+                      [style]="{'width':'100%'}"
+                      appendTo="body"
+                      [(ngModel)]="selectedCity"
+                      placeholder="Selectioner categorie"  optionLabel="name"></p-dropdown>
+        </div>
+
+      <div class="col-md">
+        <label class="w-100">Selectionner Coleur</label>
+        <div class="col-md d-inline-flex gap-4 pt-2">
+          <div class="flex align-items-center">
+            <p-checkbox label="Rouge" name="pizza" value="Rouge" [(ngModel)]="cities"></p-checkbox>
+          </div>
+          <div class="flex align-items-center">
+            <p-checkbox label="Noire" name="pizza" value="Noire" [(ngModel)]="cities"></p-checkbox>
+          </div>
+          <div class="flex align-items-center">
+            <p-checkbox label="Blue" name="pizza" value="Blue" [(ngModel)]="cities"></p-checkbox>
+          </div>
+          <div class="flex align-items-center">
+            <p-checkbox label="Vert" name="pizza" value="Vert" [(ngModel)]="cities"></p-checkbox>
+          </div>
+        </div>
+      </div>
+        <div class="col-md">
+          <label class="w-100">Selectionner Style de font</label>
+          <p-dropdown [options]="cities"
+                      appendTo="body"
+                      [style]="{'width':'100%'}"
+                      [(ngModel)]="selectedCity"
+                      placeholder="Selectioner categorie"  optionLabel="name"></p-dropdown>
+        </div>
+        <div class="col-md">
+          <label for="username" class="w-100">Product Name</label>
+          <input pInputText id="username"  class="w-100"/>
+        </div>
+        <div class="col-md">
+          <label for="username" class="w-100"> Price</label>
+          <p-inputNumber id="username" [style]="{'width':'100%'}" />
+        </div>
+      </div>
+    </div>
+    <p-button label="Enregistrer tout le modifcations et ajouter le produit"
+              class="btn1 pt-2"
+              severity="success"></p-button>
+  </div>
+
+</div>
