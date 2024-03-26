@@ -11,7 +11,6 @@ import {
   moveItemInArray
 } from "@angular/cdk/drag-drop";
 import {DragDropModule} from "primeng/dragdrop";
-import {LogLevel} from "@angular/compiler-cli";
 import {ButtonModule} from "primeng/button";
 import {InputNumberModule} from "primeng/inputnumber";
 import {DividerModule} from "primeng/divider";
@@ -19,7 +18,6 @@ import {DropdownModule} from "primeng/dropdown";
 import {CheckboxModule} from "primeng/checkbox";
 import {ColorPickerModule} from "primeng/colorpicker";
 import {EditorModule} from "primeng/editor";
-import Quill from 'quill';
 import {NgClass} from "@angular/common";
 import {SliderModule} from "primeng/slider";
 @Component({
@@ -65,7 +63,6 @@ export class DesignerComponent implements OnInit , AfterViewInit{
   selectedCity: any | undefined;
   redBorder:boolean = true;
 ngOnInit() {
-  const quill = new Quill('#editor');
   this.backgroundImageUrl= 'assets/case.png';
   this.cities = [
     { name: 'Gravure', code: 'NY' },
